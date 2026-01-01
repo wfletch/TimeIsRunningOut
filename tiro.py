@@ -28,7 +28,11 @@ def parse_args():
         default="seconds",
         help="Unit to return the duration in",
     )
-
+    parser.add_argument(
+        "--no_stub",
+        action="store_true",
+        help="Set to True if You want a CRLF at end of output"
+    )
     return parser.parse_args()
 
 
@@ -73,7 +77,7 @@ def main():
 
     result = format_duration(duration, args.delta)
     major,minor = format_placeholders(args.delta)
-    print(f"{result:{major}.{minor}f}")
+    print(f"{result:{major}.{minor}f}", end="\n" if args.no_stub else "")
 
 
 if __name__ == "__main__":
