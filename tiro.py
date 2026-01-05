@@ -2,6 +2,7 @@ import argparse
 from datetime import datetime
 
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+ARGPARSE_FORMAT = DATETIME_FORMAT.replace("%", "%%")
 
 def parse_datetime(value: str) -> datetime:
     try:
@@ -19,7 +20,7 @@ def parse_args():
         "--end_date",
         required=True,
         type=parse_datetime,
-        help=f"End datetime (format: {DATETIME_FORMAT})",
+        help=f"End datetime (format: {ARGPARSE_FORMAT})",
     )
 
     parser.add_argument(
