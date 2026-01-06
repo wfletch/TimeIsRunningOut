@@ -3,12 +3,12 @@ local runner = require("time_is_running_out.runner")
 local M = {}
 
 local VALID_LEVELS = {
-  [vim.log.levels.TRACE] = true,
-  [vim.log.levels.DEBUG] = true,
+  [vim.log.levels.TRACE] = false,
+  [vim.log.levels.DEBUG] = false,
   [vim.log.levels.INFO]  = true,
   [vim.log.levels.WARN]  = true,
   [vim.log.levels.ERROR] = true,
-  [vim.log.levels.OFF]   = true,
+  [vim.log.levels.OFF]   = false,
 }
 local function validate_level(level)
   if level == nil then
@@ -17,7 +17,7 @@ local function validate_level(level)
 
   if type(level) ~= "number" or not VALID_LEVELS[level] then
     error(
-      "time_is_running_out: `level` must be one of vim.log.levels.{TRACE,DEBUG,INFO,WARN,ERROR,OFF}",
+      "time_is_running_out: `level` must be one of vim.log.levels.{INFO,WARN,ERROR}",
       2
     )
   end
