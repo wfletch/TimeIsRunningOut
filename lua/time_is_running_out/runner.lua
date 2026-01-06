@@ -36,7 +36,7 @@ function M.run(opts)
                         data[1] .. " " .. label,
                         vim.log.levels.WARN,
                         {
-                            title = "⏳ Time Is Running Out",
+                            title = opts.title,
                             timeout = 5000,
                         }
                     )
@@ -52,7 +52,7 @@ function M.run(opts)
                         table.concat(err, "\n"),
                         vim.log.levels.ERROR,
                         {
-                            title = "⏳ Time Is Running Out",
+                            title = opts.title,
                             timeout = 5000,
                         }
                     )
